@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SO – Compute and IO Quiz</title>
+<title>Operating Systems – Compute & IO Quiz</title>
 
 <style>
 body {
     font-family: Arial, sans-serif;
-    max-width: 950px;
+    max-width: 980px;
     margin: 20px auto;
     padding: 20px;
     background-color: #f4f6f9;
@@ -17,19 +17,23 @@ body {
 h1 { text-align: center; }
 .question {
     background: #fff;
-    padding: 20px;
-    margin-bottom: 25px;
+    padding: 22px;
+    margin-bottom: 26px;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
-.options label {
+.question h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+label {
     display: block;
     margin: 10px 0;
     cursor: pointer;
 }
 button {
     display: block;
-    width: 260px;
+    width: 280px;
     margin: 40px auto;
     padding: 14px;
     font-size: 1.1em;
@@ -45,187 +49,232 @@ button {
     background: #ecf0f1;
     padding: 20px;
     border-radius: 10px;
+    text-align: center;
 }
-.explanation {
-    margin-top: 10px;
-    background: #fef9e7;
-    padding: 10px;
-    border-left: 4px solid #f1c40f;
-}
-.correct { color: #27ae60; font-weight: bold; }
-.incorrect { color: #e74c3c; font-weight: bold; }
 </style>
 </head>
 
 <body>
 
-<h1>SO – Compute and IO Quiz</h1>
+<h1>Operating Systems – Compute & IO Quiz</h1>
 
 <form id="quizForm">
 
-<!-- ================= TRUE / FALSE (1–11) ================= -->
+<!-- ================= TRUE / FALSE ================= -->
 
-<div class="question"><h3>Q1</h3>
-<p>The implementation will use BSD sockets for communication.</p>
+<div class="question">
+<h3>Question 1</h3>
+<p>The client–server application described in this context uses BSD (network) sockets as the main communication mechanism between processes.</p>
 <label><input type="radio" name="q1" value="true" required> True</label>
-<label><input type="radio" name="q1" value="false"> False</label></div>
+<label><input type="radio" name="q1" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q2</h3>
-<p>The client will perform read() syscalls on fd 0.</p>
+<div class="question">
+<h3>Question 2</h3>
+<p>The client reads commands from standard input, meaning it performs <code>read()</code> system calls on file descriptor 0.</p>
 <label><input type="radio" name="q2" value="true" required> True</label>
-<label><input type="radio" name="q2" value="false"> False</label></div>
+<label><input type="radio" name="q2" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q3</h3>
-<p>The client will use accept() to issue a connection request.</p>
+<div class="question">
+<h3>Question 3</h3>
+<p>To initiate a connection to the server, the client uses the <code>accept()</code> system call.</p>
 <label><input type="radio" name="q3" value="true" required> True</label>
-<label><input type="radio" name="q3" value="false"> False</label></div>
+<label><input type="radio" name="q3" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q4</h3>
-<p>The client doesn't need recv() to receive data.</p>
+<div class="question">
+<h3>Question 4</h3>
+<p>After connecting to the server, the client does not need to call <code>recv()</code> (or <code>read()</code>) in order to receive the output of the executed command.</p>
 <label><input type="radio" name="q4" value="true" required> True</label>
-<label><input type="radio" name="q4" value="false"> False</label></div>
+<label><input type="radio" name="q4" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q5</h3>
-<p>If recv() returns 0, the client closed the connection.</p>
+<div class="question">
+<h3>Question 5</h3>
+<p>If the <code>recv()</code> system call returns 0 on the server side, this indicates that the client has closed the connection.</p>
 <label><input type="radio" name="q5" value="true" required> True</label>
-<label><input type="radio" name="q5" value="false"> False</label></div>
+<label><input type="radio" name="q5" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q6</h3>
-<p>Each client is served by a different socket.</p>
+<div class="question">
+<h3>Question 6</h3>
+<p>In a concurrent server, each connected client is handled using a distinct connected socket on the server side.</p>
 <label><input type="radio" name="q6" value="true" required> True</label>
-<label><input type="radio" name="q6" value="false"> False</label></div>
+<label><input type="radio" name="q6" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q7</h3>
-<p>The listening socket is used to send data to the client.</p>
+<div class="question">
+<h3>Question 7</h3>
+<p>The listening socket (the one on which <code>listen()</code> is called) is used to send command output back to the client.</p>
 <label><input type="radio" name="q7" value="true" required> True</label>
-<label><input type="radio" name="q7" value="false"> False</label></div>
+<label><input type="radio" name="q7" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q8</h3>
-<p>Fork-per-client is a valid server model.</p>
+<div class="question">
+<h3>Question 8</h3>
+<p>A “fork-per-client” server architecture, where each new client is handled by a separate process, is a valid design choice.</p>
 <label><input type="radio" name="q8" value="true" required> True</label>
-<label><input type="radio" name="q8" value="false"> False</label></div>
+<label><input type="radio" name="q8" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q9</h3>
-<p>The child must call accept() again after fork().</p>
+<div class="question">
+<h3>Question 9</h3>
+<p>In a fork-per-client server, the child process must call <code>accept()</code> again in order to use the already accepted connection.</p>
 <label><input type="radio" name="q9" value="true" required> True</label>
-<label><input type="radio" name="q9" value="false"> False</label></div>
+<label><input type="radio" name="q9" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q10</h3>
-<p>Processes in a multi-process server are often BLOCKED.</p>
+<div class="question">
+<h3>Question 10</h3>
+<p>In a multi-process server implementation, processes are often in the BLOCKED state while waiting for I/O operations to complete.</p>
 <label><input type="radio" name="q10" value="true" required> True</label>
-<label><input type="radio" name="q10" value="false"> False</label></div>
+<label><input type="radio" name="q10" value="false"> False</label>
+</div>
 
-<div class="question"><h3>Q11</h3>
-<p>dup2() can redirect output to the socket.</p>
+<div class="question">
+<h3>Question 11</h3>
+<p>The <code>dup2()</code> system call can be used to redirect the standard output of a process to a socket.</p>
 <label><input type="radio" name="q11" value="true" required> True</label>
-<label><input type="radio" name="q11" value="false"> False</label></div>
+<label><input type="radio" name="q11" value="false"> False</label>
+</div>
 
-<!-- ================= MULTIPLE CHOICE (12–26) ================= -->
+<!-- ================= MULTIPLE CHOICE ================= -->
 
-<div class="question"><h3>Q12</h3>
-<p>Can we use BSD sockets for local communication?</p>
-<label><input type="radio" name="q12" value="a" required>No</label>
-<label><input type="radio" name="q12" value="b">Only port 80</label>
-<label><input type="radio" name="q12" value="c">Using network interface</label>
-<label><input type="radio" name="q12" value="d">Using BSD sockets bound to local files</label></div>
+<div class="question">
+<h3>Question 12</h3>
+<p>Can BSD sockets be used for communication between processes running on the same machine?</p>
+<label><input type="radio" name="q12" value="a" required>No, BSD sockets are only for remote communication</label>
+<label><input type="radio" name="q12" value="b">Yes, but only on port 80</label>
+<label><input type="radio" name="q12" value="c">Yes, using any network interface</label>
+<label><input type="radio" name="q12" value="d">Yes, using BSD sockets bound to local files (UNIX domain sockets)</label>
+</div>
 
-<div class="question"><h3>Q13</h3>
-<p>Can we use shared memory between two unrelated processes?</p>
-<label><input type="radio" name="q13" value="a" required>File mappings</label>
-<label><input type="radio" name="q13" value="b">Sockets</label>
-<label><input type="radio" name="q13" value="c">No</label>
-<label><input type="radio" name="q13" value="d">Anonymous mappings</label></div>
+<div class="question">
+<h3>Question 13</h3>
+<p>Is it possible to use shared memory for communication between two unrelated processes?</p>
+<label><input type="radio" name="q13" value="a" required>Yes, by using file-backed shared memory mappings</label>
+<label><input type="radio" name="q13" value="b">Yes, by using sockets</label>
+<label><input type="radio" name="q13" value="c">No, only related processes can share memory</label>
+<label><input type="radio" name="q13" value="d">Yes, but only with anonymous mappings</label>
+</div>
 
-<div class="question"><h3>Q14</h3>
-<p>Advantage of processes over threads for modularity?</p>
-<label><input type="radio" name="q14" value="a" required>Shared memory easier</label>
-<label><input type="radio" name="q14" value="b">Better confinement (separate VAS)</label>
-<label><input type="radio" name="q14" value="c">No advantage</label>
-<label><input type="radio" name="q14" value="d">Only processes use multiple CPUs</label></div>
+<div class="question">
+<h3>Question 14</h3>
+<p>What is a key advantage of using processes instead of threads when modularizing an application?</p>
+<label><input type="radio" name="q14" value="a" required>Processes share memory more easily than threads</label>
+<label><input type="radio" name="q14" value="b">Processes provide better isolation through separate virtual address spaces</label>
+<label><input type="radio" name="q14" value="c">There is no advantage of processes over threads</label>
+<label><input type="radio" name="q14" value="d">Only processes can run on multiple CPUs</label>
+</div>
 
-<div class="question"><h3>Q15</h3>
-<p>Difference between UNIX socket and a file?</p>
-<label><input type="radio" name="q15" value="a" required>FDs not stored</label>
-<label><input type="radio" name="q15" value="b">Socket in memory, file on storage</label>
-<label><input type="radio" name="q15" value="c">Socket is network-only</label>
-<label><input type="radio" name="q15" value="d">Socket works distributed</label></div>
+<div class="question">
+<h3>Question 15</h3>
+<p>Which statement correctly describes a difference between a UNIX socket and a regular file?</p>
+<label><input type="radio" name="q15" value="a" required>UNIX sockets do not have file descriptors</label>
+<label><input type="radio" name="q15" value="b">UNIX sockets are memory-backed, while files are typically storage-backed</label>
+<label><input type="radio" name="q15" value="c">UNIX sockets are only for network communication</label>
+<label><input type="radio" name="q15" value="d">UNIX sockets can be used only in distributed systems</label>
+</div>
 
-<div class="question"><h3>Q16</h3>
-<p>Advantage of threads over processes?</p>
-<label><input type="radio" name="q16" value="a" required>Faster</label>
-<label><input type="radio" name="q16" value="b">No advantage</label>
-<label><input type="radio" name="q16" value="c">TLS interaction</label>
-<label><input type="radio" name="q16" value="d">Shared virtual address space</label></div>
+<div class="question">
+<h3>Question 16</h3>
+<p>What is an advantage of using threads instead of processes when designing a modular application?</p>
+<label><input type="radio" name="q16" value="a" required>Threads are always faster than processes</label>
+<label><input type="radio" name="q16" value="b">There is no advantage of threads over processes</label>
+<label><input type="radio" name="q16" value="c">Threads communicate using TLS</label>
+<label><input type="radio" name="q16" value="d">Threads share the same virtual address space</label>
+</div>
 
-<div class="question"><h3>Q17</h3>
-<p>Why are signals asynchronous?</p>
-<label><input type="radio" name="q17" value="a" required>No sync with OS</label>
-<label><input type="radio" name="q17" value="b">Sockets</label>
-<label><input type="radio" name="q17" value="c">Not async</label>
-<label><input type="radio" name="q17" value="d">Handler called on arrival</label></div>
+<div class="question">
+<h3>Question 17</h3>
+<p>Why are signals considered asynchronous in UNIX-like operating systems?</p>
+<label><input type="radio" name="q17" value="a" required>There is no synchronization with the OS</label>
+<label><input type="radio" name="q17" value="b">Signals use asynchronous sockets</label>
+<label><input type="radio" name="q17" value="c">Signals are not asynchronous</label>
+<label><input type="radio" name="q17" value="d">A registered handler is invoked whenever the signal is delivered</label>
+</div>
 
-<div class="question"><h3>Q18</h3>
-<p>UNIX sockets, pipes and FIFOs are:</p>
-<label><input type="radio" name="q18" value="a" required>User-space buffers</label>
-<label><input type="radio" name="q18" value="b">Kernel buffers + file descriptors</label>
-<label><input type="radio" name="q18" value="c">No memory</label>
-<label><input type="radio" name="q18" value="d">Shared memory</label></div>
+<div class="question">
+<h3>Question 18</h3>
+<p>UNIX sockets, pipes, and FIFOs are best described as:</p>
+<label><input type="radio" name="q18" value="a" required>IPC mechanisms using user-space buffers</label>
+<label><input type="radio" name="q18" value="b">IPC mechanisms using kernel-space buffers accessed via file descriptors</label>
+<label><input type="radio" name="q18" value="c">IPC mechanisms that do not use memory</label>
+<label><input type="radio" name="q18" value="d">Shared-memory IPC mechanisms</label>
+</div>
 
-<div class="question"><h3>Q19</h3>
-<p>Can a pipe be used after execve()?</p>
-<label><input type="radio" name="q19" value="a" required>Yes, FDs stay open</label>
-<label><input type="radio" name="q19" value="b">Only STD*</label>
-<label><input type="radio" name="q19" value="c">VAS changes</label>
-<label><input type="radio" name="q19" value="d">FDs closed</label></div>
+<div class="question">
+<h3>Question 19</h3>
+<p>Can a pipe still be used after the child process calls <code>execve()</code>?</p>
+<label><input type="radio" name="q19" value="a" required>Yes, because file descriptors are preserved by default</label>
+<label><input type="radio" name="q19" value="b">No, only standard descriptors remain open</label>
+<label><input type="radio" name="q19" value="c">No, because the virtual address space changes</label>
+<label><input type="radio" name="q19" value="d">No, because all file descriptors are closed</label>
+</div>
 
-<div class="question"><h3>Q20</h3>
-<p>UNIX vs BSD sockets?</p>
-<label><input type="radio" name="q20" value="a" required>BSD distributed, UNIX local</label>
-<label><input type="radio" name="q20" value="b">BSD no FD</label>
-<label><input type="radio" name="q20" value="c">UNIX no FD</label>
-<label><input type="radio" name="q20" value="d">Efficiency</label></div>
+<div class="question">
+<h3>Question 20</h3>
+<p>What is a fundamental difference between UNIX domain sockets and network (BSD) sockets?</p>
+<label><input type="radio" name="q20" value="a" required>BSD sockets can be used for distributed applications, UNIX sockets are local</label>
+<label><input type="radio" name="q20" value="b">BSD sockets do not use file descriptors</label>
+<label><input type="radio" name="q20" value="c">UNIX sockets do not use file descriptors</label>
+<label><input type="radio" name="q20" value="d">BSD sockets are always faster</label>
+</div>
 
-<div class="question"><h3>Q21</h3>
-<p>Similarity between UNIX socket and file?</p>
-<label><input type="radio" name="q21" value="a" required>Stored on disk</label>
-<label><input type="radio" name="q21" value="b">Persistent</label>
-<label><input type="radio" name="q21" value="c">Filesystem entry</label>
-<label><input type="radio" name="q21" value="d">Slow IPC</label></div>
+<div class="question">
+<h3>Question 21</h3>
+<p>What is a similarity between a UNIX socket and a regular file?</p>
+<label><input type="radio" name="q21" value="a" required>Both are backed by disk storage</label>
+<label><input type="radio" name="q21" value="b">Both provide persistent storage</label>
+<label><input type="radio" name="q21" value="c">Both have an entry in the file system</label>
+<label><input type="radio" name="q21" value="d">Both are slow IPC mechanisms</label>
+</div>
 
-<div class="question"><h3>Q22</h3>
-<p>Pipe vs FIFO?</p>
-<label><input type="radio" name="q22" value="a" required>No difference</label>
-<label><input type="radio" name="q22" value="b">Pipes related, FIFO unrelated</label>
-<label><input type="radio" name="q22" value="c">Userspace vs kernel</label>
-<label><input type="radio" name="q22" value="d">Signals</label></div>
+<div class="question">
+<h3>Question 22</h3>
+<p>What is the main difference between a pipe and a FIFO?</p>
+<label><input type="radio" name="q22" value="a" required>There is no difference</label>
+<label><input type="radio" name="q22" value="b">Pipes require related processes, FIFOs do not</label>
+<label><input type="radio" name="q22" value="c">Pipes are user-space, FIFOs kernel-space</label>
+<label><input type="radio" name="q22" value="d">Pipes use descriptors, FIFOs use signals</label>
+</div>
 
-<div class="question"><h3>Q23</h3>
-<p>Semaphores for inter-thread communication?</p>
-<label><input type="radio" name="q23" value="a" required>Exclusive access</label>
-<label><input type="radio" name="q23" value="b">wait/post impossible</label>
-<label><input type="radio" name="q23" value="c">wait/post in threads</label>
-<label><input type="radio" name="q23" value="d">No messages</label></div>
+<div class="question">
+<h3>Question 23</h3>
+<p>Can semaphores be used as an inter-thread communication mechanism?</p>
+<label><input type="radio" name="q23" value="a" required>Yes, for exclusive access to shared resources</label>
+<label><input type="radio" name="q23" value="b">No, wait/post cannot be used in threads</label>
+<label><input type="radio" name="q23" value="c">Yes, by using wait() and post() in different threads</label>
+<label><input type="radio" name="q23" value="d">No, because semaphores cannot transmit data</label>
+</div>
 
-<div class="question"><h3>Q24</h3>
-<p>Why is modularity important?</p>
-<label><input type="radio" name="q24" value="a" required>All apply</label>
-<label><input type="radio" name="q24" value="b">Easier debug</label>
-<label><input type="radio" name="q24" value="c">Easier maintenance</label>
-<label><input type="radio" name="q24" value="d">Reusable</label></div>
+<div class="question">
+<h3>Question 24</h3>
+<p>Why is modularity an important principle in application design?</p>
+<label><input type="radio" name="q24" value="a" required>All of the above</label>
+<label><input type="radio" name="q24" value="b">Modular code is easier to debug</label>
+<label><input type="radio" name="q24" value="c">Modular applications are easier to maintain</label>
+<label><input type="radio" name="q24" value="d">Modular code can be reused</label>
+</div>
 
-<div class="question"><h3>Q25</h3>
-<p>Most efficient IPC?</p>
+<div class="question">
+<h3>Question 25</h3>
+<p>Which inter-process communication mechanism is generally the most efficient?</p>
 <label><input type="radio" name="q25" value="a" required>Message passing</label>
 <label><input type="radio" name="q25" value="b">Signals</label>
-<label><input type="radio" name="q25" value="c">Files</label>
-<label><input type="radio" name="q25" value="d">Shared memory</label></div>
+<label><input type="radio" name="q25" value="c">Reading and writing files</label>
+<label><input type="radio" name="q25" value="d">Shared memory</label>
+</div>
 
-<div class="question"><h3>Q26</h3>
-<p>Best definition of signals?</p>
-<label><input type="radio" name="q26" value="a" required>Asynchronous notification</label>
-<label><input type="radio" name="q26" value="b">MMU interrupt</label>
-<label><input type="radio" name="q26" value="c">Kill mechanism</label>
-<label><input type="radio" name="q26" value="d">Synchronization</label></div>
+<div class="question">
+<h3>Question 26</h3>
+<p>Which of the following best defines a signal in UNIX-like operating systems?</p>
+<label><input type="radio" name="q26" value="a" required>An asynchronous notification sent to a process</label>
+<label><input type="radio" name="q26" value="b">An interrupt generated by the MMU</label>
+<label><input type="radio" name="q26" value="c">A mechanism used only to terminate processes</label>
+<label><input type="radio" name="q26" value="d">A synchronization primitive</label>
+</div>
 
 <button type="submit">Submit Answers</button>
 </form>
@@ -244,11 +293,11 @@ document.getElementById("quizForm").onsubmit = e => {
 e.preventDefault();
 let score = 0;
 for (let q in correct) {
-const sel = document.querySelector(`input[name=${q}]:checked`);
-if (sel && sel.value === correct[q]) score++;
+    const sel = document.querySelector(`input[name=${q}]:checked`);
+    if (sel && sel.value === correct[q]) score++;
 }
 document.getElementById("result").innerHTML =
-`<h2>Your Score: ${score}/26</h2>`;
+    `<h2>Your Score: ${score}/26</h2>`;
 document.getElementById("result").style.display = "block";
 };
 </script>
