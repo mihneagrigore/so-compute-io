@@ -289,18 +289,78 @@ q12:"d",q13:"a",q14:"b",q15:"b",q16:"d",q17:"d",q18:"b",
 q19:"a",q20:"a",q21:"c",q22:"b",q23:"c",q24:"a",q25:"d",q26:"a"
 };
 
+const explanations = {
+q1: "The client uses BSD sockets to communicate with the server over the network.",
+q2: "Standard input is file descriptor 0, so reading commands uses read(0,...).",
+q3: "accept() is called by the server, not the client; the client calls connect().",
+q4: "The client must call recv() or read() to receive data sent by the server.",
+q5: "recv() returning 0 indicates the peer has closed the connection.",
+q6: "Each client connection gets a distinct socket on the server side.",
+q7: "The listening socket is only for accepting new connections, not sending data.",
+q8: "Fork-per-client is a common architecture for concurrent servers.",
+q9: "Child process uses the accepted socket; it does not call accept() again.",
+q10: "Processes waiting for I/O are typically BLOCKED until I/O completes.",
+q11: "dup2() can redirect standard output to any file descriptor, including sockets.",
+q12: "UNIX domain sockets allow BSD sockets to communicate locally via file paths.",
+q13: "File-backed shared memory allows unrelated processes to share memory.",
+q14: "Processes provide isolation through separate virtual address spaces.",
+q15: "UNIX sockets are memory-backed, files are storage-backed.",
+q16: "Threads share the same virtual address space, allowing easy communication.",
+q17: "Signals are asynchronous because they can arrive at any time, triggering a handler.",
+q18: "They use kernel-space buffers accessed through file descriptors.",
+q19: "File descriptors remain open across execve(), so pipes can still be used.",
+q20: "UNIX sockets are local; BSD sockets can be used for distributed applications.",
+q21: "Both UNIX sockets and files have entries in the filesystem.",
+q22: "Pipes require related processes; FIFOs (named pipes) can be used by unrelated processes.",
+q23: "Semaphores can be used between threads using wait/post for synchronization.",
+q24: "Modularity allows easier debugging, maintenance, and code reuse.",
+q25: "Shared memory is typically the fastest IPC mechanism.",
+q26: "A signal is an asynchronous notification sent to a process."
+};
+
 document.getElementById("quizForm").onsubmit = e => {
-e.preventDefault();
-let score = 0;
-for (let q in correct) {
-    const sel = document.querySelector(`input[name=${q}]:checked`);
-    if (sel && sel.value === correct[q]) score++;
-}
-document.getElementById("result").innerHTML =
-    `<h2>Your Score: ${score}/26</h2>`;
-document.getElementById("result").style.display = "block";
+    e.preventDefault();
+    let score = 0;
+
+    for (let q in correct) {
+        const sel = document.querySelector(`input[name=${q}]:checked`);
+        const questionDiv = document.querySelector(`input[name=${q}]`).closest(".question");
+
+        // Remove previous feedback if any
+        const prevFeedback = questionDiv.querySelector(".feedback");
+        if (prevFeedback) prevFeedback.remove();
+
+        const feedback = document.createElement("div");
+        feedback.className = "feedback";
+        feedback.style.marginTop = "10px";
+        feedback.style.padding = "10px";
+        feedback.style.borderRadius = "6px";
+
+        if (sel && sel.value === correct[q]) {
+            score++;
+            feedback.style.backgroundColor = "#d4edda";
+            feedback.style.color = "#155724";
+            feedback.innerHTML = `Correct! ✅<br>${explanations[q]}`;
+        } else {
+            feedback.style.backgroundColor = "#f8d7da";
+            feedback.style.color = "#721c24";
+            const userAns = sel ? sel.value.toUpperCase() : "No answer";
+            const correctAns = correct[q].toUpperCase();
+            feedback.innerHTML = `Incorrect ❌ (Your answer: ${userAns}, Correct answer: ${correctAns})<br>${explanations[q]}`;
+        }
+
+        questionDiv.appendChild(feedback);
+    }
+
+    document.getElementById("result").innerHTML =
+        `<h2>Your Score: ${score}/26</h2>`;
+    document.getElementById("result").style.display = "block";
+
+    // Scroll to the top of the results
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 </script>
+
 
 </body>
 </html>
