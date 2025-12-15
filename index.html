@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SO - Compute and IO Quizz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .question {
+            background: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        .question h2 {
+            margin-top: 0;
+            color: #34495e;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin: 12px 0;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        button {
+            display: block;
+            width: 220px;
+            margin: 40px auto;
+            padding: 14px;
+            font-size: 1.2em;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            margin-top: 40px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            display: none;
+        }
+        .explanation {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fef9e7;
+            border-left: 4px solid #f1c40f;
+            font-style: italic;
+        }
+        .correct { color: #27ae60; font-weight: bold; }
+        .incorrect { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>SO - Compute and IO Quizz</h1>
+    <form id="quizForm">
+
+        <!-- Question 1 -->
+        <div class="question">
+            <h2>Question 1</h2>
+            <p>The implementation will use BSD sockets for communication.</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="true" required> True</label>
+                <label><input type="radio" name="q1" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <h2>Question 2</h2>
+            <p>The client will perform `read()` syscalls on fd (file descriptor) 0.</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="true" required> True</label>
+                <label><input type="radio" name="q3" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <h2>Question 3</h2>
+            <p>The client will use the `accept()` syscall to issue a connection request.</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="true" required> True</label>
+                <label><input type="radio" name="q5" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <h2>Question 4</h2>
+            <p>The client doesn't need to use the `recv()` syscall (or a similar one) for receiving data.</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="true" required> True</label>
+                <label><input type="radio" name="q7" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <h2>Question 5</h2>
+            <p>If the `recv()` syscall on the server side returns 0 it means the client has called `close()` on its fd (file descriptor).</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="true" required> True</label>
+                <label><input type="radio" name="q9" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question">
+            <h2>Question 6</h2>
+            <p>Each client connection on the server side will be served by a different socket.</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="true" required> True</label>
+                <label><input type="radio" name="q11" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question">
+            <h2>Question 7</h2>
+            <p>To transmit the command's output to the client, the server will use the listening socket (on which `listen()` is called).</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="true" required> True</label>
+                <label><input type="radio" name="q13" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question">
+            <h2>Question 8</h2>
+            <p>The server can benefit from a "fork-per-client" implementation (each new connection is handled by a new process).</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="true" required> True</label>
+                <label><input type="radio" name="q15" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="question">
+            <h2>Question 9</h2>
+            <p>In a "fork-per-client" implementation (each new connection is handled by a separate process) the connection socket must be reopened in the child process using the `accept()` syscall.</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="true" required> True</label>
+                <label><input type="radio" name="q17" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 19 -->
+        <div class="question">
+            <h2>Question 10</h2>
+            <p>In a multi-process server, each process will often be in the BLOCKED state.</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="true" required> True</label>
+                <label><input type="radio" name="q19" value="false"> False</label>
+            </div>
+        </div>
+
+        <!-- Question 21 -->
+        <div class="question">
+            <h2>Question 11</h2>
+            <p>In a multi-process server we can use `dup2()` to avoid an explicit `send()` or `write()` syscall for transferring the output of the executed command to the client.</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="true" required> True</label>
+                <label><input type="radio" name="q21" value="false"> False</label>
+            </div>
+        </div>
+
+        <button type="submit">Submit Answers</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        const correctAnswers = {
+            q1: "true",   // BSD sockets are used
+            q3: "true",   // Client reads from stdin (fd 0)
+            q5: "false",  // Client uses connect(), server uses accept()
+            q7: "false",  // Client needs recv() or read() to receive server output
+            q9: "true",   // recv() returning 0 means graceful shutdown (close)
+            q11: "true",  // Each client has its own connected socket
+            q13: "false", // Listening socket only accepts; data uses connected socket
+            q15: "true",  // Fork-per-client provides isolation and fault tolerance
+            q17: "false", // Connected socket fd is inherited by child; no need to accept again
+            q19: "true",  // Processes block on recv() waiting for data
+            q21: "true"   // dup2() redirects stdout/stderr to socket
+        };
+
+        const explanations = {
+            q1: "Since the server may operate remotely, network communication over a transport protocol like TCP is required. This can be implemented using network sockets, commonly referred to as BSD sockets.",
+            q3: "The client will read the commands from the standard input (stdin) associated with fd 0. We generically call reading from stdin 'reading from the keyboard'.",
+            q5: "The `accept()` system call is used on the server side to handle incoming connection requests. The client uses the `connect()` syscall to connect to the server.",
+            q7: "The client will use the `recv()` system call, or other receiving system calls like `read()`, to receive the output generated by the command executed on the remote server.",
+            q9: "When `recv()` returns 0 on a socket, it means that the remote side of the connection has closed the connection. This is achieved typically using the `close()` syscall.",
+            q11: "Since the server can handle multiple clients, each client-server connection will have its own pair of sockets: one socket on the client side and a corresponding socket on the server side.",
+            q13: "The listening socket is a passive socket which is used only to accept new connections. To send the output of the command to the client the `send()` or `write()` syscall must be used on the connection socket.",
+            q15: "Using a 'fork-per-client' implementation means that each connection is handled by a separate process, with each client connection running in its own isolated process. This approach ensures better isolation and fault tolerance.",
+            q17: "In a 'fork-per-client' implementation, where each new connection is handled by a separate process, the connection socket does not need to be reopened in the child process. The connection socket is available in the child (inherited after fork).",
+            q19: "Each process in the multi-process server will call the `recv()` system call. By default, `recv()` is a blocking operation, meaning that if the socket’s buffer is empty, it will wait until data becomes available.",
+            q21: "The process spawned by `system()` will use `stdout` (file descriptor 1) or `stderr` (file descriptor 2) for its output. To redirect this output to the connection socket, we can use `dup2()` to make file descriptors 1 and 2 point to the socket."
+        };
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let score = 0;
+            const total = Object.keys(correctAnswers).length;
+            let resultHTML = `<h2>Your Results: <span style="color:#3498db;">${score}/${total}</span></h2><hr>`;
+
+            for (const [key, correct] of Object.entries(correctAnswers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                const userAnswer = selected ? selected.value : null;
+                const isCorrect = userAnswer === correct;
+
+                if (isCorrect) score++;
+
+                const status = isCorrect ? '<span class="correct">Correct</span>' : '<span class="incorrect">Incorrect</span>';
+
+                resultHTML += `
+                    <div class="question">
+                        <h3>${document.querySelector(`input[name="${key}"]`).closest('.question').querySelector('h2').innerText}</h3>
+                        <p><strong>Your answer:</strong> ${userAnswer ? (userAnswer === "true" ? "True" : "False") : "Not answered"} ${status}</p>
+                        <p><strong>Correct answer:</strong> ${correct === "true" ? "True" : "False"}</p>
+                        <div class="explanation">${explanations[key]}</div>
+                    </div>
+                `;
+            }
+
+            resultHTML = resultHTML.replace(`${score}/${total}`, `${score}/${total}`);
+            document.getElementById('result').innerHTML = `<h2>Your Score: ${score}/${total}</h2><hr>` + resultHTML;
+            document.getElementById('result').style.display = 'block';
+            window.scrollTo(0, document.getElementById('result').offsetTop);
+        });
+    </script>
+</body>
+</html>
